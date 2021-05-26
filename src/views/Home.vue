@@ -1,5 +1,19 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-  </div>
+  <section class="questions"></section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      questions: [],
+      question: "",
+    }
+  },
+  methods: {
+    addQuestion() {},
+  },
+}
+</script>
+
+<style scoped></style>
