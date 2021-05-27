@@ -8,7 +8,9 @@
       <router-link
         :to="{
           name: 'show',
-          params: { questionId: question.id, questionObj: `${question}` },
+          params: {
+            questionId: question.id,
+          },
         }"
       >
         <p>{{ question.questionText }}</p>
@@ -39,7 +41,10 @@ export default {
       let questions = []
       snapshot.forEach((doc) => {
         // console.log(doc)
-        questions.push(doc.data())
+        questions.push({
+          id: doc.id,
+          ...doc.data(),
+        })
       })
       this.questions = questions
     })
