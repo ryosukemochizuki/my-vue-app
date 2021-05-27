@@ -1,20 +1,21 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
 import Home from "@/views/Home.vue"
-import Complete from "@/views/Complete.vue"
+import Show from "@/views/Show.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
-    path: "/complete",
-    name: "Complete",
-    component: Complete,
+    path: "/show/:questionId",
+    name: "show",
+    component: Show,
+    props: true,
   },
 ]
 

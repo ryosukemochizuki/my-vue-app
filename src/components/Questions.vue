@@ -5,7 +5,14 @@
       v-for="question in questions"
       :key="question.id"
     >
-      <p>{{ question.questionText }}</p>
+      <router-link
+        :to="{
+          name: 'show',
+          params: { questionId: question.id, questionObj: `${question}` },
+        }"
+      >
+        <p>{{ question.questionText }}</p>
+      </router-link>
     </div>
   </section>
 </template>
@@ -28,10 +35,10 @@ export default {
       .orderBy("createdAt", "desc")
 
     this.subscribe = ref.onSnapshot((snapshot) => {
-      console.log(snapshot)
+      // console.log(snapshot)
       let questions = []
       snapshot.forEach((doc) => {
-        console.log(doc)
+        // console.log(doc)
         questions.push(doc.data())
       })
       this.questions = questions
