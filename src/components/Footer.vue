@@ -16,8 +16,9 @@ export default {}
   height: 50px;
   width: 100%;
   font-size: 12px;
-  background-color: lightblue;
-  position: fixed;
+  font-weight: 600;
+  background-color: #69c2c7;
+  position: absolute;
   bottom: 0;
 }
 </style>

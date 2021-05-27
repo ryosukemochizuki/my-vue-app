@@ -41,9 +41,9 @@ export default {
 .post-area {
   width: 100%;
   position: fixed;
-  bottom: 50px;
-  padding: 5px;
+  bottom: 4.3rem;
 }
+
 .area-wrapper {
   width: 80%;
   margin: 0 auto;
@@ -53,11 +53,11 @@ export default {
 
 .input-textarea {
   width: 80%;
-  padding: 5px;
+  padding: 0.5rem;
   border: none;
+  outline: none;
   border-bottom: 2px solid lightblue;
   border-radius: 25px;
-  outline: none;
   background-color: lightblue;
 }
 

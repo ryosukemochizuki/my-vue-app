@@ -181,11 +181,13 @@ body {
 }
 
 body {
-  margin-top: 4rem;
+  margin-top: 7rem;
 }
+
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
   color: #333;

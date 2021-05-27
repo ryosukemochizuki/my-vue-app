@@ -47,13 +47,14 @@ export default {
 <style scoped>
 .questions {
   width: 80%;
+  padding-bottom: 7.6rem;
+  line-height: 1.5rem;
   margin: 0 auto;
-  margin-bottom: 100px;
 }
 
 .question-contents {
-  padding: 20px;
-  font-size: 20px;
+  padding: 1.3rem;
+  font-size: 1.2em;
   border-bottom: 1px solid lightblue;
 }
 </style>

@@ -16,22 +16,25 @@ export default {}
 <style scoped>
 .nav {
   width: 100%;
+  position: fixed;
+  top: 4rem;
 }
 
 .nav__lists {
+  height: 2.3rem;
   display: flex;
-  height: 30px;
-  border-bottom: lightblue 1px dotted;
+  border-bottom: #69c2c7 1px dotted;
+  background-color: white;
 }
 
 .nav__lists__item {
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
 }
 
 .nav__lists__item:nth-child(1) {
-  border-right: lightblue 1px dotted;
+  border-right: #69c2c7 1px dotted;
 }
 </style>

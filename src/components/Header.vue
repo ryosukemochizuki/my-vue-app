@@ -9,29 +9,28 @@
   </header>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style scoped>
 .header {
+  width: 100%;
   height: 4rem;
   padding: 0 1rem;
-  background-color: lightblue;
+  background-color: #69c2c7;
+  position: fixed;
+  top: 0;
 }
 
 .header__logo {
-  padding-right: 5px;
-  height: 80%;
+  height: 60%;
+  padding-right: 0.5rem;
 }
 
 .header__logo img {
-  display: block;
   height: 100%;
+  display: block;
 }
 
 .header__title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .router-link-exact-active,
