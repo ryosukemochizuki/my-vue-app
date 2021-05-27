@@ -86,17 +86,7 @@ video {
 
 body {
   line-height: 1;
-  color: #333;
   font-weight: bold;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
 }
 
 article,
@@ -181,4 +171,22 @@ hr {
 input,
 select {
   vertical-align: middle;
+}
+
+/* 追加 */
+html,
+body {
+  height: 100%;
+  color: #333;
+}
+
+body {
+  margin-top: 4rem;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
 }
