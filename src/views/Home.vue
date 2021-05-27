@@ -1,37 +1,15 @@
 <template>
-  <section class="questions">
-    <button @click="addQuestion">追加</button>
-    <div v-for="question in questions" :key="question">
-      <p>{{ question.text }}</p>
-    </div>
+  <section class="home">
+    <Questions />
+    <Post />
   </section>
 </template>
 
 <script>
-import firebase from "firebase"
+import Post from "@/components/Post.vue"
+import Questions from "@/components/Questions.vue"
 
 export default {
-  data() {
-    return {
-      questions: [],
-      text: "接続テスト",
-    }
-  },
-  methods: {
-    addQuestion() {
-      const questionText = {
-        text: this.text,
-      }
-      firebase
-        .firestore()
-        .collection("questions")
-        .add(questionText)
-        .then((ref) => {
-          this.questions.push({ id: ref.id, ...questionText })
-        })
-    },
-  },
+  components: { Post, Questions },
 }
 </script>
-
-<style scoped></style>
