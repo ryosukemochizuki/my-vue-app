@@ -35,6 +35,6 @@ export default {}
 }
 
 .nav__lists__item:nth-child(1) {
-  border-right: #69c2c7 1px dotted;
+  border-right: rgb(105, 194, 199) 1px dotted;
 }
 </style>

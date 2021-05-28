@@ -10,10 +10,11 @@
           name: 'show',
           params: {
             questionId: question.id,
+            questionObj: question,
           },
         }"
       >
-        <p>{{ question.questionText }}</p>
+        <p class="question-text">{{ question.questionText }}</p>
       </router-link>
     </div>
   </section>
@@ -62,8 +63,18 @@ export default {
 }
 
 .question-contents {
-  padding: 1.3rem;
-  font-size: 1.2em;
   border-bottom: 1px solid lightblue;
+}
+
+.question-text {
+  font-size: 1.2em;
+  padding: 1.3rem;
+  transition: 0.5s;
+}
+
+.question-text:hover {
+  /* background-color: #69c2c74d; */
+  background-color: rgba(105, 194, 199, 0.3);
+  transition: 0.5s;
 }
 </style>
