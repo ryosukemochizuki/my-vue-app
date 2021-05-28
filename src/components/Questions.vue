@@ -10,7 +10,6 @@
           name: 'show',
           params: {
             questionId: question.id,
-            questionObj: question,
           },
         }"
       >
