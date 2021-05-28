@@ -41,7 +41,7 @@ export default {
 .post-area {
   width: 100%;
   position: fixed;
-  bottom: 4.3rem;
+  bottom: 1rem;
 }
 
 .area-wrapper {

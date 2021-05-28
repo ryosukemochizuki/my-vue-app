@@ -2,30 +2,32 @@
   <div id="app">
     <Header />
     <Navbar />
-    <router-view />
+    <div class="pages">
+      <router-view />
+    </div>
     <Post />
-    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue"
 import Navbar from "@/components/Navbar.vue"
-import Footer from "@/components/Footer.vue"
 import Post from "@/components/Post.vue"
 export default {
   components: {
     Header,
     Navbar,
-    Footer,
     Post,
   },
 }
 </script>
 
 <style scoped>
-#app {
+/* #app {
   position: relative;
-  min-height: 100%;
+} */
+
+.pages {
+  padding: 7.5rem 0 5rem;
 }
 </style>

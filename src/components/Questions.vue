@@ -37,10 +37,8 @@ export default {
       .orderBy("createdAt", "desc")
 
     this.subscribe = ref.onSnapshot((snapshot) => {
-      // console.log(snapshot)
       let questions = []
       snapshot.forEach((doc) => {
-        // console.log(doc)
         questions.push({
           id: doc.id,
           ...doc.data(),
@@ -59,7 +57,6 @@ export default {
 <style scoped>
 .questions {
   width: 80%;
-  padding-bottom: 7.6rem;
   line-height: 1.5rem;
   margin: 0 auto;
 }
