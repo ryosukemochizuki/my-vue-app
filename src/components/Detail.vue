@@ -1,16 +1,10 @@
 <template>
   <div class="show">
     <h1 class="show__text">{{ theme.themeText }}</h1>
-    <div class="buttons">
-      <button
-        v-if="nowTheme === `questions`"
-        class="change__button"
-        @click="handleChange"
-      >
-        <router-link to="/"> 済み </router-link>
-      </button>
-      <button v-else class="change__button" @click="handleChange">
-        <router-link to="/completes"> 取り消し </router-link>
+    <div class="button">
+      <button class="change__button" @click="handleChange">
+        <router-link v-if="nowTheme === `questions`" to="/"> 済み </router-link>
+        <router-link v-else to="/completes"> 戻す </router-link>
       </button>
     </div>
   </div>
@@ -58,14 +52,7 @@ export default {
   },
   created() {
     this.nowTheme = this.themes
-    if (this.nowTheme === "questions") {
-      this.otherTheme = "completes"
-    } else {
-      this.otherTheme = "questions"
-    }
-
-    console.log("nowTheme", this.nowTheme)
-    console.log("otherTheme", this.otherTheme)
+    this.otherTheme = this.nowTheme === "questions" ? "completes" : "questions"
 
     const theme = firebase
       .firestore()
@@ -94,7 +81,7 @@ export default {
   width: 85%;
 }
 
-.buttons {
+.button {
   width: 10%;
 }
 

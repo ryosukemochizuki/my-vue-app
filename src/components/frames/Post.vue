@@ -1,6 +1,6 @@
 <template>
   <div class="post__area">
-    <div class="area__wrapper">
+    <div class="input__wrapper">
       <textarea
         class="input__textarea"
         v-model="themeText"
@@ -44,7 +44,7 @@ export default {
   bottom: 1rem;
 }
 
-.area__wrapper {
+.input__wrapper {
   width: 80%;
   margin: 0 auto;
   display: flex;
