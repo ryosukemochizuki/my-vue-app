@@ -1,7 +1,7 @@
 <template>
-  <div id="show">
+  <section id="show">
     <Detail :questionId="this.questionId" />
-  </div>
+  </section>
 </template>
 
 <script>
