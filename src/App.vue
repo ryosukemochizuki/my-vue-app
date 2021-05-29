@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue"
-import Navbar from "@/components/Navbar.vue"
-import Post from "@/components/Post.vue"
+import Header from "@/components/frames/Header"
+import Navbar from "@/components//frames/Navbar"
+import Post from "@/components/frames/Post"
 export default {
   components: {
     Header,
@@ -23,10 +23,6 @@ export default {
 </script>
 
 <style scoped>
-/* #app {
-  position: relative;
-} */
-
 .pages {
   padding: 7.5rem 0 5rem;
 }

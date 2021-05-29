@@ -1,13 +1,13 @@
 <template>
   <section id="home">
-    <Questions />
+    <Themes themes="questions" />
   </section>
 </template>
 
 <script>
-import Questions from "@/components/Questions.vue"
+import Themes from "@/components/Themes"
 
 export default {
-  components: { Questions },
+  components: { Themes },
 }
 </script>

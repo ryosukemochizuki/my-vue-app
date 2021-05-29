@@ -1,14 +1,14 @@
 <template>
-  <div class="post-area">
-    <div class="area-wrapper">
+  <div class="post__area">
+    <div class="area__wrapper">
       <textarea
-        class="input-textarea"
-        v-model="questionText"
-        name="questionText"
+        class="input__textarea"
+        v-model="themeText"
+        name="themeText"
         :style="{ height }"
-        placeholder="お題を入力して下さい。 ex) 今週のタスクの認識にズレがないか確認する。"
+        placeholder="お題を入力して下さい。 ex) ...について意見を聞きたい。"
       ></textarea>
-      <button class="input-button" @click="addQuestion">投稿する</button>
+      <button class="input__button" @click="addQuestion">投稿する</button>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ import firebase from "firebase/app"
 export default {
   data() {
     return {
-      questionText: "",
+      themeText: "",
       height: 16 + "px",
     }
   },
@@ -27,31 +27,31 @@ export default {
     // お題の追加
     addQuestion() {
       const info = {
-        questionText: this.questionText,
+        themeText: this.themeText,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       }
       firebase.firestore().collection("questions").add(info)
-      this.questionText = ""
+      this.themeText = ""
     },
   },
 }
 </script>
 
 <style scoped>
-.post-area {
+.post__area {
   width: 100%;
   position: fixed;
   bottom: 1rem;
 }
 
-.area-wrapper {
+.area__wrapper {
   width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
-.input-textarea {
+.input__textarea {
   width: 80%;
   padding: 0.5rem;
   border: none;
@@ -61,7 +61,7 @@ export default {
   background-color: lightblue;
 }
 
-.input-button {
+.input__button {
   display: block;
   border: none;
   background-color: lightblue;
@@ -70,7 +70,7 @@ export default {
   color: white;
 }
 
-.input-button:hover {
+.input__button:hover {
   cursor: pointer;
 }
 </style>

@@ -1,9 +1,16 @@
 <template>
   <div class="show">
-    <h1 class="show-text">{{ question.questionText }}</h1>
+    <h1 class="show__text">{{ theme.themeText }}</h1>
     <div class="buttons">
-      <button class="complete-button" @click="moveToComp">
-        <router-link to="/">済み</router-link>
+      <button
+        v-if="nowTheme === `questions`"
+        class="change__button"
+        @click="handleChange"
+      >
+        <router-link to="/"> 済み </router-link>
+      </button>
+      <button v-else class="change__button" @click="handleChange">
+        <router-link to="/completes"> 取り消し </router-link>
       </button>
     </div>
   </div>
@@ -14,46 +21,59 @@ import firebase from "firebase/app"
 
 export default {
   props: {
-    questionId: {
+    themeId: {
+      type: String,
+      require: true,
+    },
+    themes: {
       type: String,
       require: true,
     },
   },
   data() {
     return {
-      question: "",
+      nowTheme: "",
+      otherTheme: "",
+      theme: "",
     }
   },
   methods: {
-    moveToComp() {
-      const complete = {
-        completeText: this.question.questionText,
-        createdAt: this.question.createdAt,
+    handleChange() {
+      const theme = {
+        themeText: this.theme.themeText,
+        createdAt: this.theme.createdAt,
       }
       firebase
         .firestore()
-        .collection("completes")
-        .add(complete)
+        .collection(this.otherTheme)
+        .add(theme)
         .then(() => {
           firebase
             .firestore()
-            .collection("questions")
-            .doc(this.questionId)
+            .collection(this.nowTheme)
+            .doc(this.themeId)
             .delete()
-          // .then(() => {
-          //   console.log("移動完了")
-          // })
         })
     },
   },
   created() {
-    const question = firebase
-      .firestore()
-      .collection("questions")
-      .doc(this.questionId)
+    this.nowTheme = this.themes
+    if (this.nowTheme === "questions") {
+      this.otherTheme = "completes"
+    } else {
+      this.otherTheme = "questions"
+    }
 
-    question.get().then((doc) => {
-      this.question = { id: doc.id, ...doc.data() }
+    console.log("nowTheme", this.nowTheme)
+    console.log("otherTheme", this.otherTheme)
+
+    const theme = firebase
+      .firestore()
+      .collection(this.nowTheme)
+      .doc(this.themeId)
+
+    theme.get().then((doc) => {
+      this.theme = { id: doc.id, ...doc.data() }
     })
   },
 }
@@ -70,7 +90,7 @@ export default {
   justify-content: space-between;
 }
 
-.show-text {
+.show__text {
   width: 85%;
 }
 
@@ -78,7 +98,7 @@ export default {
   width: 10%;
 }
 
-.complete-button {
+.change__button {
   display: block;
   width: 100%;
   border: none;
@@ -92,7 +112,7 @@ a {
   display: block;
 }
 
-.complete-button:hover {
+.change__button:hover {
   cursor: pointer;
 }
 </style>

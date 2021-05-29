@@ -1,19 +1,16 @@
 <template>
-  <section class="questions">
-    <div
-      class="question-contents"
-      v-for="question in questions"
-      :key="question.id"
-    >
+  <section class="themes">
+    <div class="theme__contents" v-for="theme in allThemes" :key="theme.id">
       <router-link
         :to="{
           name: 'show',
           params: {
-            questionId: question.id,
+            themeId: theme.id,
+            themes: themes,
           },
         }"
       >
-        <p class="question-text">{{ question.questionText }}</p>
+        <p class="theme__text">{{ theme.themeText }}</p>
       </router-link>
     </div>
   </section>
@@ -23,9 +20,18 @@
 import firebase from "firebase/app"
 
 export default {
+  props: {
+    themes: {
+      type: String,
+      require: true,
+      validator(value) {
+        return ["questions", "completes"].includes(value)
+      },
+    },
+  },
   data() {
     return {
-      questions: [],
+      allThemes: [],
       subscribe: null,
     }
   },
@@ -33,18 +39,18 @@ export default {
     // コレクションごと取得
     const ref = firebase
       .firestore()
-      .collection("questions")
+      .collection(this.themes)
       .orderBy("createdAt", "desc")
 
     this.subscribe = ref.onSnapshot((snapshot) => {
-      let questions = []
+      let allThemes = []
       snapshot.forEach((doc) => {
-        questions.push({
+        allThemes.push({
           id: doc.id,
           ...doc.data(),
         })
       })
-      this.questions = questions
+      this.allThemes = allThemes
     })
   },
   destroyed() {
@@ -55,24 +61,23 @@ export default {
 </script>
 
 <style scoped>
-.questions {
+.themes {
   width: 80%;
   line-height: 1.5rem;
   margin: 0 auto;
 }
 
-.question-contents {
+.theme__contents {
   border-bottom: 1px solid lightblue;
 }
 
-.question-text {
+.theme__text {
   font-size: 1.2em;
   padding: 1.3rem;
   transition: 0.5s;
 }
 
-.question-text:hover {
-  /* background-color: #69c2c74d; */
+.theme__text:hover {
   background-color: rgba(105, 194, 199, 0.3);
   transition: 0.5s;
 }

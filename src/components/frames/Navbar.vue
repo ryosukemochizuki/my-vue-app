@@ -3,7 +3,7 @@
     <ul class="nav__lists">
       <li class="nav__lists__item"><router-link to="/">お題</router-link></li>
       <li class="nav__lists__item">
-        <router-link to="/complete">済み</router-link>
+        <router-link to="/completes">済み</router-link>
       </li>
     </ul>
   </section>

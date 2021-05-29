@@ -13,13 +13,13 @@ const routes = [
     component: Home,
   },
   {
-    path: "/show/:questionId",
+    path: "/:themes/:themeId",
     name: "show",
     component: Show,
     props: true,
   },
   {
-    path: "/complete",
+    path: "/completes",
     name: "complete",
     component: Complete,
   },

@@ -1,6 +1,6 @@
 <template>
   <section id="show">
-    <Detail :questionId="this.questionId" />
+    <Detail :themeId="themeId" :themes="themes" />
   </section>
 </template>
 
@@ -12,7 +12,11 @@ export default {
     Detail,
   },
   props: {
-    questionId: {
+    themeId: {
+      type: String,
+      require: true,
+    },
+    themes: {
       type: String,
       require: true,
     },
