@@ -75,6 +75,8 @@ export default {
   font-size: 1.2em;
   padding: 1.3rem;
   transition: 0.5s;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .theme__text:hover {

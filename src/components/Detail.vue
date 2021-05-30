@@ -79,6 +79,8 @@ export default {
 
 .show__text {
   width: 85%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .button {
