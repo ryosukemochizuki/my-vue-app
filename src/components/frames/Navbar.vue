@@ -1,13 +1,37 @@
 <template>
   <section class="nav">
     <ul class="nav__lists">
-      <li class="nav__lists__item"><router-link to="/">お題</router-link></li>
       <li class="nav__lists__item">
-        <router-link to="/completes">済み</router-link>
+        <router-link
+          to="/"
+          :class="{
+            here: $route.path.match(/^\/$/) || $route.path.match(/\/questions/),
+          }"
+          >お題</router-link
+        >
+      </li>
+      <li class="nav__lists__item">
+        <router-link
+          to="/completes"
+          :class="{ here: $route.path.match(/\/completes/) }"
+          >済み</router-link
+        >
       </li>
     </ul>
   </section>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      atQuestion: true,
+      atComplete: false,
+    }
+  },
+  created() {},
+}
+</script>
 
 <style scoped>
 .nav {
@@ -19,18 +43,28 @@
 .nav__lists {
   height: 2.3rem;
   display: flex;
-  border-bottom: #69c2c7 1px dotted;
+  border-bottom: #69c2c7 1px solid;
   background-color: white;
 }
 
 .nav__lists__item {
   width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: table;
+  text-align: center;
+  height: 100%;
+  font-weight: normal;
 }
 
-.nav__lists__item:nth-child(1) {
-  border-right: rgb(105, 194, 199) 1px dotted;
+a {
+  height: 100%;
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+a.here {
+  font-weight: bold;
+  border-bottom: lightblue 3px solid;
+  background-color: rgba(173, 216, 230, 0.5);
 }
 </style>
