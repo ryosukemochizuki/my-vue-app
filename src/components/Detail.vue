@@ -1,10 +1,14 @@
 <template>
   <div class="show">
     <h1 class="show__text">{{ theme.themeText }}</h1>
-    <div class="button">
-      <button class="change__button" @click="handleChange">
+    <div class="buttons">
+      <button class="change__button" @click="handleMove">
         <router-link v-if="nowTheme === `questions`" to="/"> 済み </router-link>
         <router-link v-else to="/completes"> 戻す </router-link>
+      </button>
+      <button class="change__button" @click="handleDelete">
+        <router-link v-if="nowTheme === `questions`" to="/"> 削除 </router-link>
+        <router-link v-else to="/completes"> 削除 </router-link>
       </button>
     </div>
   </div>
@@ -32,7 +36,7 @@ export default {
     }
   },
   methods: {
-    handleChange() {
+    handleMove() {
       const theme = {
         themeText: this.theme.themeText,
         createdAt: this.theme.createdAt,
@@ -47,6 +51,16 @@ export default {
             .collection(this.nowTheme)
             .doc(this.themeId)
             .delete()
+        })
+    },
+    handleDelete() {
+      firebase
+        .firestore()
+        .collection(this.nowTheme)
+        .doc(this.themeId)
+        .delete()
+        .then(() => {
+          console.log("削除に成功")
         })
     },
   },
@@ -83,7 +97,7 @@ export default {
   word-wrap: break-word;
 }
 
-.button {
+.buttons {
   width: 10%;
 }
 
@@ -95,6 +109,10 @@ export default {
   padding: 4px;
   border-radius: 25px;
   color: white;
+}
+
+.change__button:not(:last-of-type) {
+  margin-bottom: 1rem;
 }
 
 a {
