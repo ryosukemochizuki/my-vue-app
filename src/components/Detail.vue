@@ -2,12 +2,25 @@
   <div class="show">
     <h1 class="show__text">{{ theme.themeText }}</h1>
     <div class="buttons">
-      <button class="change__button" @click="handleMove">
+      <button class="change__button" @click="moveToQuesOrComp">
         <router-link v-if="nowTheme === `questions`" to="/"> 済み </router-link>
+        <router-link v-else-if="nowTheme === `archives`" to="/archives">
+          済み
+        </router-link>
         <router-link v-else to="/completes"> 戻す </router-link>
+      </button>
+      <button class="change__button" @click="moveToQuesOrArchive">
+        <router-link v-if="nowTheme === `questions`" to="/"> 保留 </router-link>
+        <router-link v-else-if="nowTheme === `archives`" to="/archives">
+          戻す
+        </router-link>
+        <router-link v-else to="/completes"> 保留 </router-link>
       </button>
       <button class="change__button" @click="handleDelete">
         <router-link v-if="nowTheme === `questions`" to="/"> 削除 </router-link>
+        <router-link v-else-if="nowTheme === `archives`" to="/archives">
+          削除
+        </router-link>
         <router-link v-else to="/completes"> 削除 </router-link>
       </button>
     </div>
@@ -31,12 +44,30 @@ export default {
   data() {
     return {
       nowTheme: "",
+      anotherTheme: "",
       otherTheme: "",
       theme: "",
     }
   },
   methods: {
-    handleMove() {
+    moveToQuesOrComp() {
+      const theme = {
+        themeText: this.theme.themeText,
+        createdAt: this.theme.createdAt,
+      }
+      firebase
+        .firestore()
+        .collection(this.anotherTheme)
+        .add(theme)
+        .then(() => {
+          firebase
+            .firestore()
+            .collection(this.nowTheme)
+            .doc(this.themeId)
+            .delete()
+        })
+    },
+    moveToQuesOrArchive() {
       const theme = {
         themeText: this.theme.themeText,
         createdAt: this.theme.createdAt,
@@ -66,7 +97,18 @@ export default {
   },
   created() {
     this.nowTheme = this.themes
-    this.otherTheme = this.nowTheme === "questions" ? "completes" : "questions"
+    // this.otherTheme = this.nowTheme === "questions" ? "completes" : "questions"
+
+    if (this.nowTheme === "questions") {
+      this.anotherTheme = "completes"
+      this.otherTheme = "archives"
+    } else if (this.nowTheme === "archives") {
+      this.anotherTheme = "completes"
+      this.otherTheme = "questions"
+    } else {
+      this.anotherTheme = "questions"
+      this.otherTheme = "archives"
+    }
 
     const theme = firebase
       .firestore()
@@ -109,6 +151,7 @@ export default {
   padding: 4px;
   border-radius: 25px;
   color: white;
+  font-weight: bold;
 }
 
 .change__button:not(:last-of-type) {

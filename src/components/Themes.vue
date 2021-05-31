@@ -25,7 +25,7 @@ export default {
       type: String,
       require: true,
       validator(value) {
-        return ["questions", "completes"].includes(value)
+        return ["questions", "archives", "completes"].includes(value)
       },
     },
   },

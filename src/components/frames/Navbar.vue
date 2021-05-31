@@ -12,6 +12,13 @@
       </li>
       <li class="nav__lists__item">
         <router-link
+          to="/archives"
+          :class="{ here: $route.path.match(/\/archives/) }"
+          >保留</router-link
+        >
+      </li>
+      <li class="nav__lists__item">
+        <router-link
           to="/completes"
           :class="{ here: $route.path.match(/\/completes/) }"
           >済み</router-link
