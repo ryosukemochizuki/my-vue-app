@@ -3,6 +3,7 @@ import VueRouter from "vue-router"
 import Home from "@/views/Home.vue"
 import Show from "@/views/Show.vue"
 import Complete from "@/views/Complete.vue"
+import Archive from "@/views/Archive.vue"
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     path: "/completes",
     name: "complete",
     component: Complete,
+  },
+  {
+    path: "/archives",
+    name: "Archive",
+    component: Archive,
   },
 ]
 
