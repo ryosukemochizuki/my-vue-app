@@ -54,5 +54,12 @@ a {
 
 .change__button:hover {
   cursor: pointer;
+  background-color: #008000;
+}
+
+@media screen and (max-width: 700px) {
+  .change__button {
+    width: 100%;
+  }
 }
 </style>

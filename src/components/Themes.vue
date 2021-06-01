@@ -76,13 +76,19 @@ export default {
 .themes__text {
   font-size: 1.2em;
   padding: 1.3rem;
-  transition: 0.5s;
+  transition: 0.3s;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
 .themes__text:hover {
-  background-color: rgba(167, 211, 152, 0.3);
-  transition: 0.5s;
+  background-color: rgba(167, 211, 152, 0.5);
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 700px) {
+  .themes {
+    width: 90%;
+  }
 }
 </style>

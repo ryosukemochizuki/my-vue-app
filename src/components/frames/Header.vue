@@ -31,7 +31,6 @@
 
 .header__title {
   font-size: 1.1rem;
-  opacity: 0.9;
 }
 
 a {

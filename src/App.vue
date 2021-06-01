@@ -26,4 +26,10 @@ export default {
 .pages {
   padding: 7.5rem 0 5rem;
 }
+
+@media screen and (max-width: 700px) {
+  .pages {
+    padding: 7.5rem 0;
+  }
+}
 </style>

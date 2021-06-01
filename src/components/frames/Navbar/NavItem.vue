@@ -60,7 +60,7 @@ a {
 
 a.here {
   font-weight: bold;
-  opacity: 0.9;
+  opacity: 1;
   border-bottom: #a7d398 1px solid;
   background-color: rgba(167, 211, 152, 0.5);
 }

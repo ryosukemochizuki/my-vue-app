@@ -142,4 +142,14 @@ export default {
 .change__button:not(:last-of-type) {
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 700px) {
+  .detail {
+    flex-direction: column;
+  }
+  .detail__text {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
 </style>
