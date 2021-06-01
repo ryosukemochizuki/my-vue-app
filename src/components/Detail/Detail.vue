@@ -126,7 +126,7 @@ export default {
 .detail {
   width: 80%;
   margin: 0 auto;
-  padding: 5rem 1rem;
+  padding: 1.7rem 1rem;
   font-size: 1.7em;
   line-height: 2.2rem;
   display: flex;
@@ -139,30 +139,7 @@ export default {
   word-wrap: break-word;
 }
 
-.detail__buttons {
-  width: 10%;
-}
-
-.change__button {
-  display: block;
-  width: 100%;
-  border: none;
-  background-color: lightblue;
-  padding: 4px;
-  border-radius: 25px;
-  color: white;
-  font-weight: bold;
-}
-
 .change__button:not(:last-of-type) {
   margin-bottom: 1rem;
-}
-
-a {
-  display: block;
-}
-
-.change__button:hover {
-  cursor: pointer;
 }
 </style>

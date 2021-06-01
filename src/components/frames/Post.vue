@@ -85,19 +85,19 @@ export default {
   padding: 0.5rem;
   border: none;
   outline: none;
-  border-bottom: 2px solid lightblue;
-  border-radius: 25px;
-  background-color: lightblue;
+  border-radius: 10px;
+  background-color: #a7d398;
 }
 
 .input__button {
   display: block;
   height: 2.3rem;
   width: 5rem;
+  font-weight: bold;
   border: none;
-  background-color: lightblue;
+  background-color: #a7d398;
   padding: 4px;
-  border-radius: 25px;
+  border-radius: 10px;
   color: white;
   position: absolute;
   bottom: 0;

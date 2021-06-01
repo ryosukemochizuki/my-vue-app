@@ -70,7 +70,7 @@ export default {
 }
 
 .themes__contents {
-  border-bottom: 1px solid lightblue;
+  border-bottom: 1px solid #a7d398;
 }
 
 .themes__text {
@@ -82,7 +82,7 @@ export default {
 }
 
 .themes__text:hover {
-  background-color: rgba(105, 194, 199, 0.3);
+  background-color: rgba(167, 211, 152, 0.3);
   transition: 0.5s;
 }
 </style>

@@ -43,11 +43,11 @@ export default {
 
 <style scoped>
 .navbar__lists__item {
-  width: 50%;
+  height: 100%;
+  width: 100%;
+  font-weight: normal;
   display: table;
   text-align: center;
-  height: 100%;
-  font-weight: normal;
 }
 
 a {
@@ -55,11 +55,13 @@ a {
   width: 100%;
   display: table-cell;
   vertical-align: middle;
+  opacity: 0.5;
 }
 
 a.here {
   font-weight: bold;
-  border-bottom: lightblue 3px solid;
-  background-color: rgba(173, 216, 230, 0.5);
+  opacity: 0.9;
+  border-bottom: #a7d398 1px solid;
+  background-color: rgba(167, 211, 152, 0.5);
 }
 </style>
