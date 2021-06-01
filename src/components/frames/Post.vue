@@ -91,7 +91,7 @@ export default {
 
 .input__button {
   display: block;
-  height: 2.3rem;
+  height: 2.2rem;
   width: 5rem;
   font-weight: bold;
   border: none;
@@ -106,5 +106,26 @@ export default {
 
 .input__button:hover {
   cursor: pointer;
+  background-color: #008000;
+}
+
+@media screen and (max-width: 700px) {
+  .post__area {
+    bottom: 3rem;
+  }
+
+  .input__wrapper {
+    width: 90%;
+    justify-content: center;
+  }
+
+  .input__textarea {
+    width: 100%;
+  }
+
+  .input__button {
+    width: 100%;
+    bottom: -2.5rem;
+  }
 }
 </style>
