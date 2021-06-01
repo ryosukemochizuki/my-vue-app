@@ -1,16 +1,16 @@
 <template>
   <section class="themes">
-    <div class="theme__contents" v-for="theme in allThemes" :key="theme.id">
+    <div class="themes__contents" v-for="theme in allThemes" :key="theme.id">
       <router-link
         :to="{
-          name: 'show',
+          name: 'Show',
           params: {
             themeId: theme.id,
             themes: themes,
           },
         }"
       >
-        <p class="theme__text">{{ theme.themeText }}</p>
+        <p class="themes__text">{{ theme.themeText }}</p>
       </router-link>
     </div>
   </section>
@@ -42,6 +42,7 @@ export default {
       .collection(this.themes)
       .orderBy("createdAt", "desc")
 
+    // 今いるテーマの変更を購読する
     this.subscribe = ref.onSnapshot((snapshot) => {
       let allThemes = []
       snapshot.forEach((doc) => {
@@ -53,6 +54,7 @@ export default {
       this.allThemes = allThemes
     })
   },
+  // コンポーネントを消える時は購読情報も消す
   destroyed() {
     this.subscribe()
     this.subscribe = null
@@ -67,11 +69,11 @@ export default {
   margin: 0 auto;
 }
 
-.theme__contents {
-  border-bottom: 1px solid lightblue;
+.themes__contents {
+  border-bottom: 1px solid #a7d398;
 }
 
-.theme__text {
+.themes__text {
   font-size: 1.2em;
   padding: 1.3rem;
   transition: 0.5s;
@@ -79,8 +81,8 @@ export default {
   word-wrap: break-word;
 }
 
-.theme__text:hover {
-  background-color: rgba(105, 194, 199, 0.3);
+.themes__text:hover {
+  background-color: rgba(167, 211, 152, 0.3);
   transition: 0.5s;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section id="complete">
+  <section id="completes">
     <Themes themes="completes" />
   </section>
 </template>

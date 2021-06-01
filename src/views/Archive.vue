@@ -1,5 +1,5 @@
 <template>
-  <section id="archive">
+  <section id="archives">
     <Themes themes="archives" />
   </section>
 </template>

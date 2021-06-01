@@ -3,11 +3,11 @@
     <div class="input__wrapper">
       <textarea
         class="input__textarea"
-        v-model="themeText"
         name="themeText"
+        placeholder="お題を入力して下さい。 ex) ...について意見を聞きたい。"
+        v-model="themeText"
         :style="heightStyles"
         ref="area"
-        placeholder="お題を入力して下さい。 ex) ...について意見を聞きたい。"
       ></textarea>
       <button class="input__button" @click="addQuestion">投稿する</button>
     </div>
@@ -24,15 +24,17 @@ export default {
       height: 0,
     }
   },
-  mounted: function () {
+  mounted() {
     this.handleInput()
   },
   watch: {
+    // themeTextの更新時、高さを取得する
     themeText() {
       this.handleInput()
     },
   },
   computed: {
+    // styleを動的に変更する
     heightStyles() {
       return { height: this.height }
     },
@@ -40,9 +42,11 @@ export default {
   methods: {
     // お題の追加
     addQuestion() {
+      // 空だったら処理を止める
       if (!this.themeText) {
         return
       }
+
       const info = {
         themeText: this.themeText,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -50,7 +54,7 @@ export default {
       firebase.firestore().collection("questions").add(info)
       this.themeText = ""
     },
-    // textareaの高さを自動調節
+    // textareaの高さを取得
     handleInput() {
       this.height = "0" // どんどん足されていくのを防ぐ
       this.$nextTick(() => {
@@ -81,19 +85,19 @@ export default {
   padding: 0.5rem;
   border: none;
   outline: none;
-  border-bottom: 2px solid lightblue;
-  border-radius: 25px;
-  background-color: lightblue;
+  border-radius: 10px;
+  background-color: #a7d398;
 }
 
 .input__button {
   display: block;
   height: 2.3rem;
   width: 5rem;
+  font-weight: bold;
   border: none;
-  background-color: lightblue;
+  background-color: #a7d398;
   padding: 4px;
-  border-radius: 25px;
+  border-radius: 10px;
   color: white;
   position: absolute;
   bottom: 0;

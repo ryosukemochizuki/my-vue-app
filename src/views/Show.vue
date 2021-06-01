@@ -19,6 +19,9 @@ export default {
     themes: {
       type: String,
       require: true,
+      validates(value) {
+        return ["questions", "archives", "completes"].includes(value)
+      },
     },
   },
 }

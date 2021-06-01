@@ -38,17 +38,18 @@ export default {
 <style scoped>
 .change__button {
   display: block;
-  width: 100%;
-  border: none;
-  background-color: lightblue;
-  padding: 4px;
-  border-radius: 25px;
-  color: white;
+  width: 5rem;
+  height: 2.3rem;
   font-weight: bold;
+  border: none;
+  background-color: #a7d398;
+  padding: 4px;
+  border-radius: 10px;
 }
 
 a {
   display: block;
+  color: white;
 }
 
 .change__button:hover {
