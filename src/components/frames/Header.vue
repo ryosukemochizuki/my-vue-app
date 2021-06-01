@@ -1,10 +1,10 @@
 <template>
   <header class="header">
-    <router-link to="/">
+    <router-link to="/questions">
       <div class="header__logo">
         <img src="@/assets/logo.png" alt="logo" />
       </div>
-      <div class="header__title">Geek Discussion</div>
+      <p class="header__title">Geek Discussion</p>
     </router-link>
   </header>
 </template>
@@ -33,8 +33,7 @@
   font-size: 1.1rem;
 }
 
-.router-link-exact-active,
-.router-link-active {
+a {
   height: 100%;
   display: flex;
   align-items: center;

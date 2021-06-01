@@ -11,7 +11,7 @@
 
 <script>
 import Header from "@/components/frames/Header"
-import Navbar from "@/components//frames/Navbar"
+import Navbar from "@/components/frames/Navbar/Navbar"
 import Post from "@/components/frames/Post"
 export default {
   components: {
