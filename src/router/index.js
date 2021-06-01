@@ -1,9 +1,9 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import Question from "@/views/Question.vue"
-import Show from "@/views/Show.vue"
-import Complete from "@/views/Complete.vue"
-import Archive from "@/views/Archive.vue"
+import Question from "@/views/Question"
+import Archive from "@/views/Archive"
+import Complete from "@/views/Complete"
+import Show from "@/views/Show"
 
 Vue.use(VueRouter)
 
@@ -14,25 +14,29 @@ const routes = [
     redirect: "/questions",
   },
   {
+    // お題一覧
     path: "/questions",
-    name: "questions",
+    name: "Questions",
     component: Question,
   },
   {
-    path: "/:themes/:themeId",
-    name: "show",
-    component: Show,
-    props: true,
-  },
-  {
+    // 済み一覧
     path: "/completes",
-    name: "complete",
+    name: "Complete",
     component: Complete,
   },
   {
+    // 保留一覧
     path: "/archives",
     name: "Archive",
     component: Archive,
+  },
+  {
+    // 詳細画面
+    path: "/:themes/:themeId",
+    name: "Show",
+    component: Show,
+    props: true,
   },
 ]
 

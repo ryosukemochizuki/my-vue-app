@@ -3,11 +3,11 @@
     <div class="input__wrapper">
       <textarea
         class="input__textarea"
-        v-model="themeText"
         name="themeText"
+        placeholder="お題を入力して下さい。 ex) ...について意見を聞きたい。"
+        v-model="themeText"
         :style="heightStyles"
         ref="area"
-        placeholder="お題を入力して下さい。 ex) ...について意見を聞きたい。"
       ></textarea>
       <button class="input__button" @click="addQuestion">投稿する</button>
     </div>
@@ -24,15 +24,17 @@ export default {
       height: 0,
     }
   },
-  mounted: function () {
+  mounted() {
     this.handleInput()
   },
   watch: {
+    // themeTextの更新時、高さを取得する
     themeText() {
       this.handleInput()
     },
   },
   computed: {
+    // styleを動的に変更する
     heightStyles() {
       return { height: this.height }
     },
@@ -40,9 +42,11 @@ export default {
   methods: {
     // お題の追加
     addQuestion() {
+      // 空だったら処理を止める
       if (!this.themeText) {
         return
       }
+
       const info = {
         themeText: this.themeText,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -50,7 +54,7 @@ export default {
       firebase.firestore().collection("questions").add(info)
       this.themeText = ""
     },
-    // textareaの高さを自動調節
+    // textareaの高さを取得
     handleInput() {
       this.height = "0" // どんどん足されていくのを防ぐ
       this.$nextTick(() => {

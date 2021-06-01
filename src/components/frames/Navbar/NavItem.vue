@@ -1,5 +1,5 @@
 <template>
-  <li class="nav__lists__item">
+  <li class="navbar__lists__item">
     <router-link
       :to="{ path }"
       :class="{
@@ -21,7 +21,7 @@ export default {
         return ["/questions", "/archives", "/completes"].includes(value)
       },
     },
-    // hereクラスの取り外しのため
+    // hereクラスの取り外し判定用
     match: {
       type: String,
       require: true,
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped>
-.nav__lists__item {
+.navbar__lists__item {
   width: 50%;
   display: table;
   text-align: center;

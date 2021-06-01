@@ -1,7 +1,7 @@
 <template>
-  <div class="show">
-    <h1 class="show__text">{{ theme.themeText }}</h1>
-    <div class="show__buttons">
+  <div class="detail">
+    <h1 class="detail__text">{{ theme.themeText }}</h1>
+    <div class="detail__buttons">
       <DetailButton
         :texts="['済み', '済み', '戻す']"
         :nowTheme="nowTheme"
@@ -30,10 +30,12 @@ export default {
     DetailButton,
   },
   props: {
+    // どのお題かを判別するため
     themeId: {
       type: String,
       require: true,
     },
+    // どのテーマか
     themes: {
       type: String,
       require: true,
@@ -41,14 +43,17 @@ export default {
   },
   data() {
     return {
+      theme: "",
+      // ３つテーマがあるからコレクションを判別するため準備
       nowTheme: "",
       anotherTheme: "",
       otherTheme: "",
-      theme: "",
     }
   },
   methods: {
-    // お題か済みに移動
+    // それぞれのDetailButtonコンポーネントに違ったメソッドを渡したいためDetailで定義
+
+    // anotherThemeにデータを移動
     moveToQuesOrComp() {
       const theme = {
         themeText: this.theme.themeText,
@@ -59,15 +64,15 @@ export default {
         .collection(this.anotherTheme)
         .add(theme)
         .then(() => {
+          // 移動前のテーマから消す
           firebase
             .firestore()
             .collection(this.nowTheme)
             .doc(this.themeId)
             .delete()
         })
-      // console.log(this.moveToQuesOrComp)
     },
-    // お題か保留に移動
+    // otherThemeにデータを移動
     moveToQuesOrArchive() {
       const theme = {
         themeText: this.theme.themeText,
@@ -78,21 +83,19 @@ export default {
         .collection(this.otherTheme)
         .add(theme)
         .then(() => {
+          // 移動前のテーマから消す
           firebase
             .firestore()
             .collection(this.nowTheme)
             .doc(this.themeId)
             .delete()
         })
-      // console.log(this.moveToQuesOrArchive)
     },
     // 削除
     handleDelete() {
       firebase.firestore().collection(this.nowTheme).doc(this.themeId).delete()
-      // console.log(this.handleDelete)
     },
   },
-
   created() {
     this.nowTheme = this.themes
 
@@ -120,7 +123,7 @@ export default {
 </script>
 
 <style scoped>
-.show {
+.detail {
   width: 80%;
   margin: 0 auto;
   padding: 5rem 1rem;
@@ -130,13 +133,13 @@ export default {
   justify-content: space-between;
 }
 
-.show__text {
+.detail__text {
   width: 85%;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-.show__buttons {
+.detail__buttons {
   width: 10%;
 }
 

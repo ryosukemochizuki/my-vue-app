@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <ul class="nav__lists">
+    <ul class="navbar__lists">
       <NavItem path="/questions" match="questions" navTitle="お題" />
       <NavItem path="/archives" match="archives" navTitle="保留" />
       <NavItem path="/completes" match="completes" navTitle="済み" />
@@ -25,7 +25,7 @@ export default {
   top: 4rem;
 }
 
-.nav__lists {
+.navbar__lists {
   height: 2.3rem;
   display: flex;
   border-bottom: #69c2c7 1px solid;
