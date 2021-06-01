@@ -1,24 +1,18 @@
 # my-vue-app
 
-## Project setup
-```
-npm install
-```
+制作期間: 2021/5/24 ~ 定期更新中
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+使用技術: HTML, CSS, Javascript, Vue.js 2 系 (CLI)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+データベース: cloud firestore
 
-### Lints and fixes files
-```
-npm run lint
-```
+デプロイ: firebase hosting
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 要約
+
+パネルディスカッションのお題をまとめて置いたり、共有したいこと・自分の質問を書き溜めておける。
+
+## 今後の更新目標
+
+- 認証機能をつけて、admin だけがお題を移動できるようにする。
+- 複数のコレクションを追加して、コレクションごとに展開できるようにする。
