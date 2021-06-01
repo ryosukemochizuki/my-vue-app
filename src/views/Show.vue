@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Detail from "@/components/Detail.vue"
+import Detail from "@/components/Detail/Detail"
 
 export default {
   components: {

@@ -52,10 +52,9 @@ export default {
     },
     // textareaの高さを自動調節
     handleInput() {
-      this.height = "0"
+      this.height = "0" // どんどん足されていくのを防ぐ
       this.$nextTick(() => {
         this.height = this.$refs.area.scrollHeight - 16 + "px"
-        console.log(this.height)
       })
     },
   },

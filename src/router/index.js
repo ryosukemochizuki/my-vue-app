@@ -1,6 +1,6 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import Home from "@/views/Home.vue"
+import Question from "@/views/Question.vue"
 import Show from "@/views/Show.vue"
 import Complete from "@/views/Complete.vue"
 import Archive from "@/views/Archive.vue"
@@ -9,9 +9,14 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    // 初期画面を/questionsにする
     path: "/",
-    name: "home",
-    component: Home,
+    redirect: "/questions",
+  },
+  {
+    path: "/questions",
+    name: "questions",
+    component: Question,
   },
   {
     path: "/:themes/:themeId",

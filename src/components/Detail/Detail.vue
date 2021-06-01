@@ -1,36 +1,34 @@
 <template>
   <div class="show">
     <h1 class="show__text">{{ theme.themeText }}</h1>
-    <div class="buttons">
-      <button class="change__button" @click="moveToQuesOrComp">
-        <router-link v-if="nowTheme === `questions`" to="/"> 済み </router-link>
-        <router-link v-else-if="nowTheme === `archives`" to="/archives">
-          済み
-        </router-link>
-        <router-link v-else to="/completes"> 戻す </router-link>
-      </button>
-      <button class="change__button" @click="moveToQuesOrArchive">
-        <router-link v-if="nowTheme === `questions`" to="/"> 保留 </router-link>
-        <router-link v-else-if="nowTheme === `archives`" to="/archives">
-          戻す
-        </router-link>
-        <router-link v-else to="/completes"> 保留 </router-link>
-      </button>
-      <button class="change__button" @click="handleDelete">
-        <router-link v-if="nowTheme === `questions`" to="/"> 削除 </router-link>
-        <router-link v-else-if="nowTheme === `archives`" to="/archives">
-          削除
-        </router-link>
-        <router-link v-else to="/completes"> 削除 </router-link>
-      </button>
+    <div class="show__buttons">
+      <DetailButton
+        :texts="['済み', '済み', '戻す']"
+        :nowTheme="nowTheme"
+        :clickFunc="moveToQuesOrComp"
+      />
+      <DetailButton
+        :texts="['保留', '戻す', '保留']"
+        :nowTheme="nowTheme"
+        :clickFunc="moveToQuesOrArchive"
+      />
+      <DetailButton
+        :texts="['削除', '削除', '削除']"
+        :nowTheme="nowTheme"
+        :clickFunc="handleDelete"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import firebase from "firebase/app"
+import DetailButton from "@/components/Detail/DetailButton"
 
 export default {
+  components: {
+    DetailButton,
+  },
   props: {
     themeId: {
       type: String,
@@ -50,6 +48,7 @@ export default {
     }
   },
   methods: {
+    // お題か済みに移動
     moveToQuesOrComp() {
       const theme = {
         themeText: this.theme.themeText,
@@ -66,7 +65,9 @@ export default {
             .doc(this.themeId)
             .delete()
         })
+      // console.log(this.moveToQuesOrComp)
     },
+    // お題か保留に移動
     moveToQuesOrArchive() {
       const theme = {
         themeText: this.theme.themeText,
@@ -83,21 +84,17 @@ export default {
             .doc(this.themeId)
             .delete()
         })
+      // console.log(this.moveToQuesOrArchive)
     },
+    // 削除
     handleDelete() {
-      firebase
-        .firestore()
-        .collection(this.nowTheme)
-        .doc(this.themeId)
-        .delete()
-        .then(() => {
-          console.log("削除に成功")
-        })
+      firebase.firestore().collection(this.nowTheme).doc(this.themeId).delete()
+      // console.log(this.handleDelete)
     },
   },
+
   created() {
     this.nowTheme = this.themes
-    // this.otherTheme = this.nowTheme === "questions" ? "completes" : "questions"
 
     if (this.nowTheme === "questions") {
       this.anotherTheme = "completes"
@@ -139,7 +136,7 @@ export default {
   word-wrap: break-word;
 }
 
-.buttons {
+.show__buttons {
   width: 10%;
 }
 
