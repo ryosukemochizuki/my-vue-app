@@ -44,7 +44,7 @@ export default {
 <style scoped>
 .navbar__lists__item {
   height: 100%;
-  width: 100%;
+  width: calc(100% / 3);
   font-weight: normal;
   display: table;
   text-align: center;
