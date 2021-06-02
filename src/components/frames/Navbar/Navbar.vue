@@ -28,6 +28,7 @@ export default {
 .navbar__lists {
   height: 2.3rem;
   display: flex;
+  justify-content: space-around;
   border-bottom: #a7d398 1px solid;
   background-color: white;
 }

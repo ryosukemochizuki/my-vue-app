@@ -57,6 +57,12 @@ a {
   background-color: #008000;
 }
 
+@media screen and (max-width: 1024px) {
+  .change__button:hover {
+    background-color: #a7d398;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .change__button {
     width: 100%;

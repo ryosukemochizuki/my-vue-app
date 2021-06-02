@@ -178,6 +178,7 @@ html,
 body {
   height: 100%;
   color: #333;
+  font-size: 120%;
 }
 
 li {
