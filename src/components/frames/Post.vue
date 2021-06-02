@@ -109,6 +109,12 @@ export default {
   background-color: #008000;
 }
 
+@media screen and (max-width: 1024px) {
+  .input__button:hover {
+    background-color: #a7d398;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .post__area {
     bottom: 3rem;
