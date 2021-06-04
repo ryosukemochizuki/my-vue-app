@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Header from "@/components/frames/Header"
+import Header from "@/components/frames/Header/Header"
 import Navbar from "@/components/frames/Navbar/Navbar"
 import Post from "@/components/frames/Post"
 export default {

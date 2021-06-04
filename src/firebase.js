@@ -1,5 +1,7 @@
 import firebase from "firebase/app"
 import "firebase/firestore"
+// authenticationを有効にする
+import "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDE3ouUJBiAaDt4b7Vw5iVSs4FAQqb5TKc",

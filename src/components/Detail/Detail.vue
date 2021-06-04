@@ -1,7 +1,7 @@
 <template>
   <div class="detail">
     <h1 class="detail__text">{{ theme.themeText }}</h1>
-    <div class="detail__buttons">
+    <div class="detail__buttons" :class="{ seen: isAdmin }">
       <DetailButton
         :texts="['済み', '済み', '戻す']"
         :nowTheme="nowTheme"
@@ -48,6 +48,7 @@ export default {
       nowTheme: "",
       anotherTheme: "",
       otherTheme: "",
+      isAdmin: false,
     }
   },
   methods: {
@@ -119,6 +120,20 @@ export default {
       this.theme = { id: doc.id, ...doc.data() }
     })
   },
+  mounted() {
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     this.isAdmin = true
+    //   }
+    // })
+    firebase.auth().onAuthStateChanged(
+      function (user) {
+        if (user) {
+          this.isAdmin = true
+        }
+      }.bind(this)
+    )
+  },
 }
 </script>
 
@@ -137,6 +152,14 @@ export default {
   width: 85%;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.detail__buttons {
+  display: none;
+}
+
+.detail__buttons.seen {
+  display: block;
 }
 
 .change__button:not(:last-of-type) {
