@@ -4,6 +4,7 @@ import Question from "@/views/Question"
 import Archive from "@/views/Archive"
 import Complete from "@/views/Complete"
 import Show from "@/views/Show"
+import Admin from "@/views/Admin"
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,12 @@ const routes = [
     name: "Show",
     component: Show,
     props: true,
+  },
+  {
+    // 管理者ログイン画面
+    path: "/adminLogin",
+    name: "Admin",
+    component: Admin,
   },
 ]
 
