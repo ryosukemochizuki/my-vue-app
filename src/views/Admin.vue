@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       email: "adminuser@example.com",
-      password: "adminuser",
+      password: "",
     }
   },
   methods: {
@@ -32,8 +32,8 @@ export default {
         .then(() => {
           this.$router.push("/questions")
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
+          alert("管理者パスワードが間違っています。もう一度入力して下さい。")
         })
     },
   },
